@@ -7,24 +7,24 @@ return [
     | Default Filesystem Disk
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the default filesystem disk that should be used
-    | by the framework. The "local" disk, as well as a variety of cloud
-    | based disks are available to your application for file storage.
+    | Здесь вы можете указать файловую систему по умолчанию, которая будет
+    | использоваться фреймворком. "local" диск и различные облачные диски
+    | доступны для хранения файлов вашего приложения.
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'public'),  // Изменил на 'public' для публичных файлов
 
     /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
     |--------------------------------------------------------------------------
     |
-    | Below you may configure as many filesystem disks as necessary, and you
-    | may even configure multiple disks for the same driver. Examples for
-    | most supported storage drivers are configured here for reference.
+    | Ниже вы можете настроить столько файловых систем, сколько потребуется.
+    | Вы можете даже настроить несколько дисков для одного драйвера.
+    | Примеры для большинства поддерживаемых драйверов указаны ниже.
     |
-    | Supported drivers: "local", "ftp", "sftp", "s3"
+    | Поддерживаемые драйверы: "local", "ftp", "sftp", "s3"
     |
     */
 
@@ -32,15 +32,14 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app/private'),
-            'serve' => true,
+            'root' => storage_path('app'),
             'throw' => false,
         ],
 
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -64,9 +63,9 @@ return [
     | Symbolic Links
     |--------------------------------------------------------------------------
     |
-    | Here you may configure the symbolic links that will be created when the
-    | `storage:link` Artisan command is executed. The array keys should be
-    | the locations of the links and the values should be their targets.
+    | Здесь вы можете настроить символические ссылки, которые будут созданы
+    | при выполнении команды `storage:link` Artisan. Ключи массива — это
+    | расположения ссылок, а значения — это их целевые директории.
     |
     */
 
